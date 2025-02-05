@@ -1,6 +1,6 @@
 import { BasicInfo } from "../BasicInfo";
-import { PlanetCollections } from "../planet/PlanetCollections";
-import { PlanetInfos } from "../planet/PlanetInfo";
+import { PeopleCollections } from "./PeopleCollections";
+import { PeopleInfos } from "./PeopleInfos";
 
-export interface People extends BasicInfo, PlanetInfos, PlanetCollections {}
-export type { PlanetCollections, PlanetInfos };
+export interface People extends BasicInfo, PeopleInfos, PeopleCollections {}
+export type { PeopleCollections, PeopleInfos };
