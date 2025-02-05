@@ -3,9 +3,10 @@ import { NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const searchParam = searchParams.get("searchParam");
+  const types = searchParams.get("types");
 
   const response = await fetch(
-    `http://localhost:3001/search?searchParam=${searchParam}`
+    `http://localhost:3001/search?searchParam=${searchParam}&types=${types}`
   );
   const data = await response.json();
 

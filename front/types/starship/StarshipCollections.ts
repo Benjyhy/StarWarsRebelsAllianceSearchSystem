@@ -1,4 +1,4 @@
-export interface SpaceshipCollections {
+export interface StarshipCollections {
   films: string[];
   pilots: string[];
 }

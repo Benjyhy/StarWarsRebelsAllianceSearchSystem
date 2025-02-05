@@ -1,6 +1,6 @@
 export enum SwapiType {
   PLANETS = "planets",
-  SPACESHIPS = "spaceships",
+  STARSHIPS = "starships",
   VEHICLES = "vehicles",
   PEOPLE = "people",
   FILMS = "films",

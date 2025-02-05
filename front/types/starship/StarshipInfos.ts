@@ -1,4 +1,4 @@
-export interface SpaceshipInfos {
+export interface StarshipInfos {
   name: string;
   model: string;
   starship_class: string;

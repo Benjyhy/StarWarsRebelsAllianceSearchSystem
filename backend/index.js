@@ -25,10 +25,12 @@ const init = async () => {
         path: '/search',
         handler: async (req, h) => {
             try {
-                const results = await Promise.all(SwapiRoutes.map(async (swapiRoute) => {
-                    
+                console.log(req.query)
+                const filters = req.query.types.split(',');
+                const filteredSwapiRoutes = SwapiRoutes.filter((swapiRoute) => filters.includes(swapiRoute.type));
+                const results = await Promise.all(filteredSwapiRoutes.map(async (swapiRoute) => {
                     try {
-                        const response = await fetch(`${swapiRoute}?search=${req.query.searchParam}`);
+                        const response = await fetch(`${swapiRoute.url}?search=${req.query.searchParam}`);
                         const data = await response.json();
                         return data.results.map((result) => ({
                             id: getIdFromUrl(result.url),

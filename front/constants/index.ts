@@ -1,7 +1,7 @@
 import {
   FilmInfos,
   PlanetInfos,
-  SpaceshipInfos,
+  StarshipInfos,
   SpeciesInfos,
   VehicleInfos,
 } from "@/types";
@@ -37,7 +37,7 @@ export const PlanetInfosKeys: (keyof PlanetInfos)[] = [
   "surface_water",
 ];
 
-export const SpaceshipInfosKeys: (keyof SpaceshipInfos)[] = [
+export const StarshipInfosKeys: (keyof StarshipInfos)[] = [
   "model",
   "starship_class",
   "manufacturer",

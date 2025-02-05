@@ -2,8 +2,8 @@ import {
   FilmInfosKeys,
   PeopleInfosKeys,
   PlanetInfosKeys,
-  SpaceshipInfosKeys,
   SpeciesInfosKeys,
+  StarshipInfosKeys,
   VehicleInfosKeys,
 } from "@/constants";
 import { SwapiType } from "@/types";
@@ -23,8 +23,8 @@ export function getProperties(type: SwapiType): (keyof DetailedResponse)[] {
       return PeopleInfosKeys as unknown as (keyof DetailedResponse)[];
     case SwapiType.PLANETS:
       return PlanetInfosKeys as unknown as (keyof DetailedResponse)[];
-    case SwapiType.SPACESHIPS:
-      return SpaceshipInfosKeys as unknown as (keyof DetailedResponse)[];
+    case SwapiType.STARSHIPS:
+      return StarshipInfosKeys as unknown as (keyof DetailedResponse)[];
     case SwapiType.SPECIES:
       return SpeciesInfosKeys as unknown as (keyof DetailedResponse)[];
     case SwapiType.VEHICLES:
