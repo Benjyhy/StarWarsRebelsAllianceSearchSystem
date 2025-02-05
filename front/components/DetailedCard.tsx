@@ -10,9 +10,13 @@ export default function DetailedCard(props: {type: SwapiType, data: DetailedResp
     return (
         <Card>
             <CardHeader>
-                <CardTitle>{title}</CardTitle>
-                <CardDescription>{type}</CardDescription>
-                <CardIcon type={type}/>
+                <div className="flex items-center">
+                    <CardIcon type={type}/>
+                    <div className="mx-5">
+                        <CardTitle>{title}</CardTitle>
+                        <CardDescription><span className="italic">{type}</span></CardDescription>
+                    </div>
+                </div>
             </CardHeader>
             <ContentByType type={type} data={data}/>
         </Card>

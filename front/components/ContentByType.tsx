@@ -12,7 +12,12 @@ export default function ContentByType(props: {type: SwapiType, data: DetailedRes
             {
                 properties.map((property, index) =>{ 
                     const value = (data)[property];
-                    return (<p key={index}>{formatPropertyName(property)}: {value}</p>)
+                    return (
+                        <p key={index}>
+                            <span className="font-bold">{formatPropertyName(property)}:&nbsp;</span> 
+                            {value}
+                        </p>
+                    )
                 })
             }
         </CardContent>

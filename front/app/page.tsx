@@ -40,21 +40,22 @@ export default function Home() {
   }, [searchTerm])
 
   return (
-    <div>
-      <h1>Welcome To Star Wars Rebels Alliance Search System !</h1>
+    <div className="m-10 flex flex-col items-center">
+      <h1 className="font-bold text-center mb-5">Welcome To Star Wars Rebels Alliance Search System !</h1>
       <Input 
         placeholder='search...' 
         type="text"
         value={searchTerm} 
         onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-1/3 mb-10"
       /> 
       {loading && (<>Loading...</>)}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {data && (
-        <ul>
+        <ul className="w-1/3">
           {data.map((unit, index) => (
-            <li key={index}>
-              <Link href={`/details/${unit.type}/${unit.id}`}>{unit.name}</Link>
+            <li key={index} className="mb-3">
+              <Link className="hover:bg-emerald-400 p-2" href={`/details/${unit.type}/${unit.id}`}>{unit.name}</Link>
             </li>
           ))} 
         </ul>

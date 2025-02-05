@@ -8,7 +8,6 @@ import {
 import { PeopleInfos } from "@/types";
 
 export const FilmInfosKeys: (keyof FilmInfos)[] = [
-  "title",
   "episode_id",
   "opening_crawl",
   "director",
@@ -17,7 +16,6 @@ export const FilmInfosKeys: (keyof FilmInfos)[] = [
 ];
 
 export const PeopleInfosKeys: (keyof PeopleInfos)[] = [
-  "name",
   "birth_year",
   "eye_color",
   "gender",
@@ -29,7 +27,6 @@ export const PeopleInfosKeys: (keyof PeopleInfos)[] = [
 ];
 
 export const PlanetInfosKeys: (keyof PlanetInfos)[] = [
-  "name",
   "diameter",
   "rotation_period",
   "orbital_period",
@@ -41,7 +38,6 @@ export const PlanetInfosKeys: (keyof PlanetInfos)[] = [
 ];
 
 export const SpaceshipInfosKeys: (keyof SpaceshipInfos)[] = [
-  "name",
   "model",
   "starship_class",
   "manufacturer",
@@ -57,7 +53,6 @@ export const SpaceshipInfosKeys: (keyof SpaceshipInfos)[] = [
 ];
 
 export const SpeciesInfosKeys: (keyof SpeciesInfos)[] = [
-  "name",
   "classification",
   "designation",
   "average_height",
@@ -70,7 +65,6 @@ export const SpeciesInfosKeys: (keyof SpeciesInfos)[] = [
 ];
 
 export const VehicleInfosKeys: (keyof VehicleInfos)[] = [
-  "name",
   "model",
   "vehicle_class",
   "manufacturer",
