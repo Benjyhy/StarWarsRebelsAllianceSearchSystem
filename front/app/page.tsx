@@ -33,7 +33,10 @@ export default function Home() {
   }, [searchTerm]);
 
   useEffect(() => {
-    if (!debouncedSearchTerm.trim()) return;
+    if (!debouncedSearchTerm.trim()) {
+      setData(null);
+      return;
+    }
 
     const fetchData = async () => {
       setLoading(true);

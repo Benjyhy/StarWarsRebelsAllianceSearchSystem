@@ -25,7 +25,6 @@ const init = async () => {
         path: '/search',
         handler: async (req, h) => {
             try {
-                console.log(req.query)
                 const filters = req.query.types.split(',');
                 const filteredSwapiRoutes = SwapiRoutes.filter((swapiRoute) => filters.includes(swapiRoute.type));
                 const results = await Promise.all(filteredSwapiRoutes.map(async (swapiRoute) => {
