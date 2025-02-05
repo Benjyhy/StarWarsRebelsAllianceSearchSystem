@@ -76,3 +76,5 @@ export const VehicleInfosKeys: (keyof VehicleInfos)[] = [
   "cargo_capacity",
   "consumables",
 ];
+
+export const DEBOUNCE_TIME = 700;

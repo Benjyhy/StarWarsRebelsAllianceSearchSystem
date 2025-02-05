@@ -4,22 +4,34 @@ import { Input } from "@/components/ui/input"
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { SearchedData } from "@/types";
+import { DEBOUNCE_TIME } from "@/constants";
 
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [data, setData] = useState<SearchedData[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!searchTerm.trim()) return;
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, DEBOUNCE_TIME);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (!debouncedSearchTerm.trim()) return;
     
     const fetchData = async () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`/api/search?searchParam=${searchTerm}`);
+        const response = await fetch(`/api/search?searchParam=${debouncedSearchTerm}`);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -37,7 +49,7 @@ export default function Home() {
     };
 
     fetchData();
-  }, [searchTerm])
+  }, [debouncedSearchTerm])
 
   return (
     <div className="m-10 flex flex-col items-center">
@@ -50,7 +62,7 @@ export default function Home() {
         className="w-1/3 mb-10"
       /> 
       {loading && (<>Loading...</>)}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="red-500">{error}</p>}
       {data && (
         <ul className="w-1/3">
           {data.map((unit, index) => (
