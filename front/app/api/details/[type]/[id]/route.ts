@@ -14,7 +14,22 @@ export async function GET(
   }
 
   try {
-    const response = await fetch(`http://localhost:3001/details/${type}/${id}`);
+    const authorization = request.headers.get("authorization");
+    if (authorization === null) {
+      return Response.json(
+        { error: "Authorization header is missing" },
+        { status: 401 }
+      );
+    }
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_HAPI_API_URL}/details/${type}/${id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: authorization,
+        },
+      }
+    );
     const data = await response.json();
     return Response.json({ results: data }, { status: 200 });
   } catch (error: unknown) {

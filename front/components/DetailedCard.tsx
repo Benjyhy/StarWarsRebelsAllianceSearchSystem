@@ -4,11 +4,11 @@ import CardIcon from "./CardIcon";
 import { SwapiType } from "@/types";
 import ContentByType from "./ContentByType";
 
-export default function DetailedCard(props: {type: SwapiType, data: DetailedResponse}) {
+export default function DetailedCard(props: {type: SwapiType, data: DetailedResponse | null}) {
     const {type, data} = props;
-    const title = 'title' in data ? data.title : 'name' in data ? data.name : 'Unknown';
+    const title = 'title' in data! ? data.title : 'name' in data! ? data.name : 'Unknown';
     return (
-        <Card>
+        data && <Card>
             <CardHeader>
                 <div className="flex items-center">
                     <CardIcon type={type}/>

@@ -14,7 +14,6 @@ const validate = async (request, username, password) => {
     }
 
     const isValid = await Bcrypt.compare(password, user.password);
-    console.log(`Authentication attempt for ${username}:`, isValid, password, user.password);
     const credentials = { id: user.id, name: user.name };
 
     return { isValid, credentials };
@@ -38,6 +37,27 @@ const init = async () => {
             return 'Welcome to Star Wars Rebels Alliance Search System';
         }
     });
+
+    server.route({
+        method: 'POST',
+        path: '/login',
+        handler: async (req, h) => {
+            const { username, password } = req.payload;
+    
+            if (!username || !password) {
+                return h.response({ error: 'Missing username or password' }).code(400);
+            }
+    
+            const { isValid, credentials } = await validate(req, username, password);
+    
+            if (!isValid) {
+                return h.response({ error: 'Invalid username or password' }).code(401);
+            }
+    
+            return h.response({ message: 'Authentication successful', user: credentials }).code(200);
+        }
+    });
+    
 
     server.route({
         method: 'GET',
