@@ -8,12 +8,13 @@ const {users} = require('./db');
 
 const validate = async (request, username, password) => {
 
-    const user = users[username];
+    const user = users[username.toLowerCase()];
     if (!user) {
         return { credentials: null, isValid: false };
     }
 
     const isValid = await Bcrypt.compare(password, user.password);
+    console.log(`Authentication attempt for ${username}:`, isValid, password, user.password);
     const credentials = { id: user.id, name: user.name };
 
     return { isValid, credentials };
@@ -75,6 +76,9 @@ const init = async () => {
     server.route({
         method : 'GET',
         path: '/details/{type}/{id}',
+        options: {
+            auth: 'simple',
+        },
         handler: async (req, h) => {
             try {
                 const endpoint = `${SwapiBaseUrl}${req.params.type}/${req.params.id}`;
