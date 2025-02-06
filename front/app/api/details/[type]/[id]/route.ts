@@ -1,9 +1,9 @@
-import { NextRequest } from "next/server";
 import { SwapiType } from "@/types/SwapiType";
-
+import { NextRequest } from "next/server";
+type tParams = Promise<{ type: SwapiType; id: string }>;
 export async function GET(
   request: NextRequest,
-  { params }: { params: { type: SwapiType; id: string } }
+  { params }: { params: tParams }
 ) {
   const { type, id } = await params;
   if (!type || !id) {
