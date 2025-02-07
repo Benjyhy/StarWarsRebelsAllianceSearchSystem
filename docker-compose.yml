@@ -1,18 +1,18 @@
-version: '3.8'
+version: "3.8"
 
 services:
   nextjs:
-    build: 
+    build:
       context: ./front
     ports:
       - "3000:3000"
     depends_on:
       - hapi
     environment:
-      - NEXT_PUBLIC_HAPI_API_URL=http://hapi:3001
+      - NEXT_PUBLIC_HAPI_API_URL=http://hapi:4000
 
   hapi:
-    build: 
+    build:
       context: ./backend
     ports:
-      - "3001:3001"
+      - "4000:4000"
